@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { v } from "../data";
+const base = import.meta.env.BASE_URL;
 const fonts =
   "https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=Mulish:wght@400;500;600;700&family=Sacramento&display=swap";
 const sorten: [string, string][] = [
@@ -59,6 +60,11 @@ const sorten: [string, string][] = [
         <p class="mt-7 text-sm text-[#5f4d3d]">
           <span class="text-[#c08a2d]">★★★★★</span> <strong class="font-semibold text-[#2a1f17]">{v.rating}</strong> · {v.reviews} Google-Bewertungen
         </p>
+
+        <figure class="relative mx-auto mt-14 max-w-3xl">
+          <img src={`${base}fotos/eisbecher.jpg`} width="1000" height="668" alt="Hausgemachter Eisbecher mit frischen Früchten im Eiscafé Venezia" class="aspect-[3/2] w-full rounded-[2rem] object-cover shadow-[0_24px_60px_-18px_rgba(42,31,23,0.45)] ring-1 ring-[#2a1f17]/10" fetchpriority="high" />
+          <figcaption class="script absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-[#f7f1e7]/95 px-7 py-1 text-3xl text-[#b8502e] shadow ring-1 ring-[#2a1f17]/10">frisch gemacht</figcaption>
+        </figure>
       </div>
     </section>
 
@@ -80,21 +86,17 @@ const sorten: [string, string][] = [
     <section data-reveal class="mx-auto grid max-w-5xl items-center gap-10 px-5 py-16 sm:grid-cols-[1.4fr_1fr]">
       <div>
         <p class="text-xs font-semibold tracking-[0.22em] text-[#b8502e] uppercase">Der Mann am Tresen</p>
-        <h2 class="ds mt-4 text-4xl font-semibold sm:text-5xl">Buongiorno,<br />ich bin Marcello.</h2>
+        <h2 class="ds mt-4 text-4xl font-semibold sm:text-5xl">Buongiorno,<br />ich bin Marcelo.</h2>
         <p class="mt-6 max-w-md text-lg leading-relaxed text-[#5f4d3d]">
           Bei mir entsteht das Gelato hausgemacht — Tag für Tag, in Ruhe und mit guten Zutaten.
           Kommt vorbei, nehmt euch Zeit und genießt ein Stück Italien mitten in Wiesloch.
         </p>
-        <p class="script mt-5 text-5xl text-[#b8502e]">Marcello</p>
+        <p class="script mt-5 text-5xl text-[#b8502e]">Marcelo</p>
       </div>
-      <div class="relative">
-        <div class="aspect-[4/5] rounded-[1.75rem] bg-[#e3d6c0] ring-1 ring-[#2a1f17]/10">
-          <div class="flex h-full flex-col items-center justify-center gap-2 text-center">
-            <span class="ds text-2xl text-[#a8967c]">Marcello an der Theke</span>
-            <span class="text-xs tracking-wide text-[#a8967c]">Foto folgt</span>
-          </div>
-        </div>
-      </div>
+      <figure class="relative">
+        <img src={`${base}fotos/winter.jpg`} width="1440" height="900" alt="Das Eiscafé Venezia in der Hauptstraße Wiesloch" class="aspect-[4/5] w-full rounded-[1.75rem] object-cover object-center ring-1 ring-[#2a1f17]/10" loading="lazy" />
+        <figcaption class="absolute inset-x-3 bottom-3 rounded-xl bg-[#2a1f17]/55 px-4 py-2 text-center text-sm text-[#f7f1e7] backdrop-blur-sm">Vor dem Eiscafé in der Hauptstraße</figcaption>
+      </figure>
     </section>
 
     <!-- Karte -->
@@ -102,6 +104,7 @@ const sorten: [string, string][] = [
       <div class="mx-auto max-w-5xl px-5 py-16">
         <p class="text-xs font-semibold tracking-[0.22em] text-[#b8502e] uppercase">Aus unserer Theke</p>
         <h2 class="ds mt-3 text-4xl font-semibold sm:text-5xl">Was bei uns über die Theke geht</h2>
+        <p class="mt-3 text-[#5f4d3d]">Eisbecher ab <strong class="ds text-xl text-[#8a3c20]">4,50 €</strong> · Pizza-Eis 5,50 € · Eiskaffee 3,50 € — frisch gemacht, wie auf unserer Karte.</p>
 
         <div class="mt-10 grid gap-4 sm:grid-cols-2">
           {v.spezial.map(([t, d]) => (
@@ -173,7 +176,10 @@ const sorten: [string, string][] = [
           </dl>
         </div>
       </div>
-      <p class="pb-8 text-center text-xs text-[#f7f1e7]/40">{v.name} · {v.adresse} · NURAC</p>
+      <div class="flex flex-col items-center gap-3 pb-8">
+        <img src={`${base}fotos/logo-weiss.png`} width="200" height="47" alt="Eiscafé Venezia" class="h-9 w-auto opacity-90" loading="lazy" />
+        <p class="text-center text-xs text-[#f7f1e7]/40">{v.adresse} · Inhaber Marcelo La Terra Pirre · Seite von NURAC</p>
+      </div>
     </section>
 
     <!-- Sticky CTA (mobile) -->
