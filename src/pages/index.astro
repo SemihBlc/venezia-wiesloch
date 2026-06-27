@@ -113,6 +113,25 @@ const becher: [string, string, string][] = [
       </figure>
     </section>
 
+    <!-- Galerie / Atmosphäre -->
+    <section data-reveal class="mx-auto max-w-6xl px-5 py-16">
+      <p class="text-xs font-semibold tracking-[0.22em] text-[#b8502e] uppercase">Dolce Vita</p>
+      <h2 class="ds mt-3 text-4xl font-semibold sm:text-5xl">Ein Nachmittag bei Venezia</h2>
+      <div class="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {([
+          ["cappuccino.jpg", "Italienischer Cappuccino"],
+          ["piazza.jpg", "Mitten im Ort"],
+          ["schild.jpg", "Unser Eiscafé"],
+        ] as [string, string][]).map(([f, alt]) => (
+          <figure class="group relative aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-[#2a1f17]/10">
+            <img src={`${base}/fotos/${f}`} alt={alt} loading="lazy" class="h-full w-full object-cover transition duration-[800ms] ease-out group-hover:scale-[1.07]" />
+            <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#2a1f17]/55 via-[#2a1f17]/5 to-transparent"></div>
+            <figcaption class="script absolute bottom-3 left-5 text-3xl text-[#f7f1e7]">{alt}</figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+
     <!-- Karte -->
     <section data-reveal class="border-t border-[#2a1f17]/8 bg-[#efe6d6]">
       <div class="mx-auto max-w-5xl px-5 py-16">
