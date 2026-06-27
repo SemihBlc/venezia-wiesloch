@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { v } from "../data";
-const base = import.meta.env.BASE_URL;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const fonts =
   "https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=Mulish:wght@400;500;600;700&family=Sacramento&display=swap";
 const sorten: [string, string][] = [
@@ -62,7 +62,7 @@ const sorten: [string, string][] = [
         </p>
 
         <figure class="relative mx-auto mt-14 max-w-3xl">
-          <img src={`${base}fotos/eisbecher.jpg`} width="1000" height="668" alt="Hausgemachter Eisbecher mit frischen Früchten im Eiscafé Venezia" class="aspect-[3/2] w-full rounded-[2rem] object-cover shadow-[0_24px_60px_-18px_rgba(42,31,23,0.45)] ring-1 ring-[#2a1f17]/10" fetchpriority="high" />
+          <img src={`${base}/fotos/eisbecher.jpg`} width="1000" height="668" alt="Hausgemachter Eisbecher mit frischen Früchten im Eiscafé Venezia" class="aspect-[3/2] w-full rounded-[2rem] object-cover shadow-[0_24px_60px_-18px_rgba(42,31,23,0.45)] ring-1 ring-[#2a1f17]/10" fetchpriority="high" />
           <figcaption class="script absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-[#f7f1e7]/95 px-7 py-1 text-3xl text-[#b8502e] shadow ring-1 ring-[#2a1f17]/10">frisch gemacht</figcaption>
         </figure>
       </div>
@@ -94,7 +94,7 @@ const sorten: [string, string][] = [
         <p class="script mt-5 text-5xl text-[#b8502e]">Marcelo</p>
       </div>
       <figure class="relative">
-        <img src={`${base}fotos/winter.jpg`} width="1440" height="900" alt="Das Eiscafé Venezia in der Hauptstraße Wiesloch" class="aspect-[4/5] w-full rounded-[1.75rem] object-cover object-center ring-1 ring-[#2a1f17]/10" loading="lazy" />
+        <img src={`${base}/fotos/winter.jpg`} width="1440" height="900" alt="Das Eiscafé Venezia in der Hauptstraße Wiesloch" class="aspect-[4/5] w-full rounded-[1.75rem] object-cover object-center ring-1 ring-[#2a1f17]/10" loading="lazy" />
         <figcaption class="absolute inset-x-3 bottom-3 rounded-xl bg-[#2a1f17]/55 px-4 py-2 text-center text-sm text-[#f7f1e7] backdrop-blur-sm">Vor dem Eiscafé in der Hauptstraße</figcaption>
       </figure>
     </section>
@@ -177,7 +177,7 @@ const sorten: [string, string][] = [
         </div>
       </div>
       <div class="flex flex-col items-center gap-3 pb-8">
-        <img src={`${base}fotos/logo-weiss.png`} width="200" height="47" alt="Eiscafé Venezia" class="h-9 w-auto opacity-90" loading="lazy" />
+        <img src={`${base}/fotos/logo-weiss.png`} width="200" height="47" alt="Eiscafé Venezia" class="h-9 w-auto opacity-90" loading="lazy" />
         <p class="text-center text-xs text-[#f7f1e7]/40">{v.adresse} · Inhaber Marcelo La Terra Pirre · Seite von NURAC</p>
       </div>
     </section>
