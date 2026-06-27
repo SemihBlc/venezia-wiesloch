@@ -119,12 +119,12 @@ const becher: [string, string, string][] = [
       <h2 class="ds mt-3 text-4xl font-semibold sm:text-5xl">Ein Nachmittag bei Venezia</h2>
       <div class="mt-9 grid grid-cols-1 gap-4 sm:grid-cols-3">
         {([
-          ["cappuccino.jpg", "Italienischer Cappuccino"],
-          ["piazza.jpg", "Mitten im Ort"],
-          ["schild.jpg", "Unser Eiscafé"],
-        ] as [string, string][]).map(([f, alt]) => (
+          ["cappuccino.jpg", "Italienischer Cappuccino", "object-center"],
+          ["piazza.jpg", "Mitten im Ort", "object-center"],
+          ["schild.jpg", "Unser Eiscafé", "object-[18%_center]"],
+        ] as [string, string, string][]).map(([f, alt, pos]) => (
           <figure class="group relative aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-[#2a1f17]/10">
-            <img src={`${base}/fotos/${f}`} alt={alt} loading="lazy" class="h-full w-full object-cover transition duration-[800ms] ease-out group-hover:scale-[1.07]" />
+            <img src={`${base}/fotos/${f}`} alt={alt} loading="lazy" class={`h-full w-full object-cover ${pos} transition duration-[800ms] ease-out group-hover:scale-[1.07]`} />
             <div class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#2a1f17]/55 via-[#2a1f17]/5 to-transparent"></div>
             <figcaption class="script absolute bottom-3 left-5 text-3xl text-[#f7f1e7]">{alt}</figcaption>
           </figure>
