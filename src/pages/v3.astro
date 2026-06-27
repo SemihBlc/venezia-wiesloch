@@ -1,0 +1,65 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { v } from "../data";
+const fonts =
+  "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap";
+---
+
+<Layout title={`${v.name} Wiesloch — Gelato`} fonts={fonts}>
+  <main class="min-h-svh bg-white text-[#14140f] antialiased [font-family:Inter,sans-serif]">
+    <header class="mx-auto flex max-w-5xl items-center justify-between px-6 py-6">
+      <span class="text-sm font-semibold tracking-[0.25em] uppercase">Venezia</span>
+      <a href={v.telHref} class="text-sm font-medium text-[#6f7d5a] transition hover:text-[#14140f]">{v.tel}</a>
+    </header>
+
+    <section class="mx-auto max-w-5xl px-6 pt-20 pb-24">
+      <div class="flex items-center gap-2.5 text-sm text-[#5f6b50]">
+        <span class="size-1.5 rounded-full bg-[#7cae5d]"></span> Jetzt geöffnet · bis 23 Uhr
+      </div>
+      <h1 class="mt-8 max-w-3xl text-6xl leading-[1.02] font-semibold tracking-[-0.03em] sm:text-8xl">
+        Gelato.<br /><span class="text-[#9aa884]">Caffè. Dolci.</span>
+      </h1>
+      <p class="mt-8 max-w-md text-lg leading-relaxed text-[#5b5b52]">
+        Italienisches Eiscafé in Wiesloch. Hausgemacht von Marcello. {v.rating} ★ aus {v.reviews} Bewertungen.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href={v.telHref} class="rounded-full bg-[#14140f] px-7 py-3.5 text-sm font-medium text-white transition hover:bg-[#2c2c22]">Anrufen</a>
+        <a href={v.mapsUrl} target="_blank" rel="noopener" class="rounded-full border border-[#14140f]/15 px-7 py-3.5 text-sm font-medium transition hover:border-[#7cae5d]">Route</a>
+      </div>
+    </section>
+
+    <section class="border-t border-[#14140f]/10">
+      <div class="mx-auto max-w-5xl px-6 py-20">
+        <p class="text-sm tracking-[0.2em] text-[#9aa884] uppercase">Spezialitäten</p>
+        <div class="mt-8 divide-y divide-[#14140f]/10">
+          {v.spezial.map(([t, d]) => (
+            <div class="grid gap-2 py-7 sm:grid-cols-[1fr_2fr] sm:gap-10">
+              <h3 class="text-2xl font-semibold tracking-[-0.02em]">{t}</h3>
+              <p class="leading-relaxed text-[#5b5b52]">{d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-[#14140f]/10 bg-[#f7f7f3]">
+      <div class="mx-auto grid max-w-5xl gap-12 px-6 py-20 sm:grid-cols-2">
+        <div>
+          <p class="text-sm tracking-[0.2em] text-[#9aa884] uppercase">Öffnungszeiten</p>
+          <dl class="mt-6">
+            {v.zeiten.map(([t, z]) => (
+              <div class="flex justify-between border-b border-[#14140f]/10 py-4"><dt class="text-[#5b5b52]">{t}</dt><dd class="font-medium">{z}</dd></div>
+            ))}
+          </dl>
+        </div>
+        <div>
+          <p class="text-sm tracking-[0.2em] text-[#9aa884] uppercase">Kontakt</p>
+          <p class="mt-6 text-xl font-medium">{v.adresse}</p>
+          <p class="mt-1 text-[#5b5b52]"><a href={v.telHref} class="hover:text-[#14140f]">{v.tel}</a></p>
+          <a href={v.mapsUrl} target="_blank" rel="noopener" class="mt-7 inline-block rounded-full bg-[#7cae5d] px-7 py-3.5 text-sm font-medium text-white transition hover:bg-[#6c9b4f]">Route öffnen</a>
+        </div>
+      </div>
+      <p class="pb-8 text-center text-xs text-[#14140f]/30">Variante 3 · Modern &amp; clean · NURAC-Entwurf</p>
+    </section>
+  </main>
+</Layout>

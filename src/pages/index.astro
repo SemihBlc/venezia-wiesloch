@@ -1,0 +1,238 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { v } from "../data";
+const fonts =
+  "https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=Mulish:wght@400;500;600;700&family=Sacramento&display=swap";
+const sorten: [string, string][] = [
+  ["Pistazio", "#7cae5d"],
+  ["Stracciatella", "#d8cdb6"],
+  ["Amarena", "#b0335a"],
+  ["Limone", "#e6c34a"],
+  ["Nocciola", "#9c6b3f"],
+  ["Fragola", "#e8607a"],
+  ["Cioccolato", "#5a3a24"],
+  ["Vaniglia", "#e9d49f"],
+];
+---
+
+<Layout title={`${v.name} Wiesloch — Hausgemachtes Gelato & Dolce Vita`} fonts={fonts}>
+  <main class="min-h-svh overflow-x-hidden bg-[#f7f1e7] text-[#2a1f17] antialiased [font-family:Mulish,sans-serif] pb-20">
+    <!-- Header -->
+    <header class="sticky top-0 z-30 border-b border-[#2a1f17]/8 bg-[#f7f1e7]/85 backdrop-blur">
+      <div class="mx-auto flex max-w-5xl items-center justify-between px-5 py-3.5">
+        <span class="ds text-2xl leading-none font-semibold tracking-tight">Venezia</span>
+        <a href={v.telHref} class="rounded-full bg-[#b8502e] px-4 py-2 text-sm font-semibold text-[#f7f1e7] transition hover:bg-[#9d3f22]">Anrufen</a>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative isolate overflow-hidden">
+      <!-- schwebende Gelato-Farbkreise (Parallax) -->
+      <div id="orbs" aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
+        <span class="orb" style="--c:#7cae5d; --s:120px; left:8%;  top:18%;  --d:0.18"></span>
+        <span class="orb" style="--c:#e8607a; --s:90px;  right:10%; top:12%;  --d:0.30"></span>
+        <span class="orb" style="--c:#e6c34a; --s:70px;  left:16%; bottom:14%; --d:0.24"></span>
+        <span class="orb" style="--c:#b8502e; --s:150px; right:6%;  bottom:8%; --d:0.12"></span>
+        <span class="orb" style="--c:#6b7257; --s:60px;  left:46%; top:8%;   --d:0.36"></span>
+      </div>
+
+      <div class="mx-auto max-w-5xl px-5 pt-14 pb-14 text-center sm:pt-20">
+        <p class="text-xs font-semibold tracking-[0.28em] text-[#b8502e] uppercase">Italienisches Eiscafé · Wiesloch</p>
+        <h1 class="ds mt-5 text-[#2a1f17]">
+          <span class="block text-xl font-medium tracking-[0.35em] uppercase">Eiscafé</span>
+          <span class="block text-7xl leading-[0.9] font-semibold italic sm:text-9xl">Venezia</span>
+        </h1>
+        <p class="mx-auto mt-7 max-w-xl text-lg leading-relaxed text-[#5f4d3d]">
+          Hausgemachtes Gelato, italienischer Espresso und ein Stück <span class="ds text-xl italic">dolce vita</span> — seit Jahren der süße Treffpunkt an der Hauptstraße.
+        </p>
+
+        <div class="mt-7 inline-flex items-center gap-2.5 rounded-full border border-[#6b7257]/30 bg-[#6b7257]/10 px-4 py-2 text-sm font-medium text-[#4f573f]">
+          <span id="dot" class="size-2 rounded-full bg-[#6b7257]"></span>
+          <span id="status">Jetzt geöffnet · bis 23 Uhr</span>
+        </div>
+
+        <div class="mt-9 flex flex-wrap justify-center gap-3">
+          <a href={v.telHref} class="rounded-full bg-[#b8502e] px-8 py-4 font-semibold text-[#f7f1e7] shadow-sm transition hover:-translate-y-0.5 hover:bg-[#9d3f22]">Tisch? Einfach anrufen</a>
+          <a href={v.mapsUrl} target="_blank" rel="noopener" class="rounded-full border border-[#2a1f17]/20 px-8 py-4 font-semibold transition hover:-translate-y-0.5 hover:border-[#b8502e] hover:text-[#b8502e]">Route öffnen</a>
+        </div>
+
+        <p class="mt-7 text-sm text-[#5f4d3d]">
+          <span class="text-[#c08a2d]">★★★★★</span> <strong class="font-semibold text-[#2a1f17]">{v.rating}</strong> · {v.reviews} Google-Bewertungen
+        </p>
+      </div>
+    </section>
+
+    <!-- Sorten-Lauf-Leiste -->
+    <div class="border-y border-[#2a1f17]/8 bg-[#efe6d6] py-4">
+      <div class="marquee">
+        <div class="marquee-track">
+          {[...sorten, ...sorten].map(([name, c]) => (
+            <span class="ds inline-flex items-center gap-2.5 text-2xl text-[#2a1f17]">
+              <span class="size-3 rounded-full" style={`background:${c}`}></span>{name}
+              <span class="px-3 text-[#b8502e]/40">·</span>
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Über Marcello -->
+    <section data-reveal class="mx-auto grid max-w-5xl items-center gap-10 px-5 py-16 sm:grid-cols-[1.4fr_1fr]">
+      <div>
+        <p class="text-xs font-semibold tracking-[0.22em] text-[#b8502e] uppercase">Der Mann am Tresen</p>
+        <h2 class="ds mt-4 text-4xl font-semibold sm:text-5xl">Buongiorno,<br />ich bin Marcello.</h2>
+        <p class="mt-6 max-w-md text-lg leading-relaxed text-[#5f4d3d]">
+          Bei mir entsteht das Gelato hausgemacht — Tag für Tag, in Ruhe und mit guten Zutaten.
+          Kommt vorbei, nehmt euch Zeit und genießt ein Stück Italien mitten in Wiesloch.
+        </p>
+        <p class="script mt-5 text-5xl text-[#b8502e]">Marcello</p>
+      </div>
+      <div class="relative">
+        <div class="aspect-[4/5] rounded-[1.75rem] bg-[#e3d6c0] ring-1 ring-[#2a1f17]/10">
+          <div class="flex h-full flex-col items-center justify-center gap-2 text-center">
+            <span class="ds text-2xl text-[#a8967c]">Marcello an der Theke</span>
+            <span class="text-xs tracking-wide text-[#a8967c]">Foto folgt</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Karte -->
+    <section data-reveal class="border-t border-[#2a1f17]/8 bg-[#efe6d6]">
+      <div class="mx-auto max-w-5xl px-5 py-16">
+        <p class="text-xs font-semibold tracking-[0.22em] text-[#b8502e] uppercase">Aus unserer Theke</p>
+        <h2 class="ds mt-3 text-4xl font-semibold sm:text-5xl">Was bei uns über die Theke geht</h2>
+
+        <div class="mt-10 grid gap-4 sm:grid-cols-2">
+          {v.spezial.map(([t, d]) => (
+            <article class="rounded-2xl border border-[#2a1f17]/10 bg-[#f7f1e7] p-6 transition hover:-translate-y-1 hover:border-[#b8502e]/40">
+              <h3 class="ds text-2xl font-semibold text-[#8a3c20]">{t}</h3>
+              <p class="mt-2 leading-relaxed text-[#5f4d3d]">{d}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Sorten-Grid -->
+    <section data-reveal class="mx-auto max-w-5xl px-5 py-16">
+      <p class="text-xs font-semibold tracking-[0.22em] text-[#b8502e] uppercase">Gelato</p>
+      <h2 class="ds mt-3 text-4xl font-semibold sm:text-5xl">Italienische Klassiker</h2>
+      <div class="mt-9 grid grid-cols-2 gap-3 sm:grid-cols-4">
+        {sorten.map(([name, c]) => (
+          <div class="flex items-center gap-3 rounded-2xl border border-[#2a1f17]/10 bg-[#efe6d6] px-4 py-4 transition hover:-translate-y-1">
+            <span class="size-7 shrink-0 rounded-full ring-2 ring-[#f7f1e7]" style={`background:${c}`}></span>
+            <span class="ds text-xl font-semibold">{name}</span>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-sm text-[#a8967c]">Auswahl variiert saisonal · Preise vor Ort</p>
+    </section>
+
+    <!-- Öffnungszeiten + Bewertung -->
+    <section data-reveal class="border-t border-[#2a1f17]/8 bg-[#efe6d6]">
+      <div class="mx-auto grid max-w-5xl gap-10 px-5 py-16 sm:grid-cols-2">
+        <div>
+          <p class="text-xs font-semibold tracking-[0.22em] text-[#b8502e] uppercase">Öffnungszeiten</p>
+          <dl id="zeiten" class="mt-6">
+            {v.zeiten.map(([t, z], i) => (
+              <div data-row={i} class="flex items-center justify-between border-b border-[#2a1f17]/10 py-4">
+                <dt class="text-[#5f4d3d]">{t}</dt><dd class="ds text-xl font-semibold">{z}</dd>
+              </div>
+            ))}
+          </dl>
+          <p class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-[#4f573f]">
+            <span class="size-2 rounded-full bg-[#6b7257]"></span><span id="status2">Jetzt geöffnet</span>
+          </p>
+        </div>
+        <div class="flex flex-col justify-center rounded-[1.5rem] bg-[#f7f1e7] p-8 text-center ring-1 ring-[#2a1f17]/8">
+          <div class="text-[#c08a2d]">★★★★★</div>
+          <div class="ds mt-2 text-6xl font-semibold">{v.rating}</div>
+          <p class="mt-1 text-[#5f4d3d]">aus {v.reviews} Google-Bewertungen</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section class="bg-[#2a1f17] text-[#f7f1e7]">
+      <div class="mx-auto grid max-w-5xl gap-8 px-5 py-16 sm:grid-cols-2">
+        <div>
+          <h2 class="ds text-4xl font-semibold">Komm vorbei.</h2>
+          <dl class="mt-7 space-y-4 text-lg">
+            <div><dt class="text-xs tracking-[0.2em] text-[#c08a2d] uppercase">Adresse</dt><dd class="mt-1">{v.adresse}</dd></div>
+            <div><dt class="text-xs tracking-[0.2em] text-[#c08a2d] uppercase">Telefon</dt><dd class="mt-1"><a href={v.telHref} class="hover:text-[#e9a87d]">{v.tel}</a></dd></div>
+          </dl>
+          <a href={v.mapsUrl} target="_blank" rel="noopener" class="mt-7 inline-block rounded-full bg-[#b8502e] px-7 py-3.5 font-semibold transition hover:-translate-y-0.5 hover:bg-[#c96239]">Route öffnen</a>
+        </div>
+        <div class="rounded-[1.5rem] bg-[#f7f1e7]/5 p-7 ring-1 ring-[#f7f1e7]/10">
+          <p class="text-xs tracking-[0.2em] text-[#c08a2d] uppercase">Öffnungszeiten</p>
+          <dl class="mt-5 divide-y divide-[#f7f1e7]/10">
+            {v.zeiten.map(([t, z]) => (
+              <div class="flex justify-between py-3.5"><dt class="text-[#cdbfae]">{t}</dt><dd class="ds text-xl">{z}</dd></div>
+            ))}
+          </dl>
+        </div>
+      </div>
+      <p class="pb-8 text-center text-xs text-[#f7f1e7]/40">{v.name} · {v.adresse} · NURAC</p>
+    </section>
+
+    <!-- Sticky CTA (mobile) -->
+    <div class="fixed inset-x-0 bottom-0 z-40 flex gap-2 border-t border-[#2a1f17]/10 bg-[#f7f1e7]/95 p-2.5 backdrop-blur sm:hidden">
+      <a href={v.telHref} class="flex-1 rounded-full bg-[#b8502e] py-3 text-center font-semibold text-[#f7f1e7]">Anrufen</a>
+      <a href={v.mapsUrl} target="_blank" rel="noopener" class="flex-1 rounded-full border border-[#2a1f17]/20 py-3 text-center font-semibold">Route</a>
+    </div>
+  </main>
+
+  <style>
+    .ds { font-family: "Cormorant", Georgia, serif; }
+    .script { font-family: "Sacramento", cursive; }
+    .orb { position: absolute; width: var(--s); height: var(--s); background: var(--c); border-radius: 50%; opacity: 0.3; will-change: transform; animation: floaty 11s ease-in-out infinite; }
+    @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-26px); } }
+    .marquee { overflow: hidden; }
+    .marquee-track { display: flex; width: max-content; gap: 0; animation: marquee 30s linear infinite; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    [data-reveal].in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .orb, .marquee-track { animation: none; }
+      [data-reveal] { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+
+  <script>
+    // Live-Status
+    const openH = [10, 9, 9, 9, 9, 9, 9];
+    const closeH = 23;
+    const now = new Date();
+    const day = now.getDay();
+    const h = now.getHours() + now.getMinutes() / 60;
+    const isOpen = h >= openH[day] && h < closeH;
+    let txt: string;
+    if (isOpen) txt = `Jetzt geöffnet · bis ${closeH} Uhr`;
+    else if (h < openH[day]) txt = `Geschlossen · öffnet heute um ${openH[day]} Uhr`;
+    else txt = `Geschlossen · öffnet morgen um ${openH[(day + 1) % 7]} Uhr`;
+    const st = document.getElementById("status");
+    if (st) st.textContent = txt;
+    const st2 = document.getElementById("status2");
+    if (st2) st2.textContent = isOpen ? `Jetzt geöffnet · bis ${closeH} Uhr` : txt;
+    const dot = document.getElementById("dot");
+    if (dot) dot.style.background = isOpen ? "#6b7257" : "#b8502e";
+    const row = day === 0 ? 1 : 0;
+    const rowEl = document.querySelector(`#zeiten [data-row="${row}"]`);
+    if (rowEl) { (rowEl as HTMLElement).style.color = "#8a3c20"; (rowEl as HTMLElement).style.fontWeight = "600"; }
+
+    // Scroll-Reveals
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll("[data-reveal]").forEach((el) => io.observe(el));
+
+    // Hero-Parallax (dezent): bewegt die Orb-Ebene, Orbs floaten unabhängig weiter
+    const orbsBox = document.getElementById("orbs");
+    if (orbsBox) {
+      window.addEventListener("scroll", () => {
+        orbsBox.style.transform = `translateY(${window.scrollY * 0.18}px)`;
+      }, { passive: true });
+    }
+  </script>
+</Layout>
