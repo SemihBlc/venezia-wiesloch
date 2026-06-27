@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* Dokument-Hintergrund = Creme der Seite — sonst blitzt unten / beim Overscroll Weiß durch */
+html {
+  background-color: #f7f1e7;
+}

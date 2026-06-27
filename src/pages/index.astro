@@ -75,8 +75,8 @@ const becher: [string, string, string][] = [
           <span class="text-[#c08a2d]">★★★★★</span> <strong class="font-semibold text-[#2a1f17]">{v.rating}</strong> · {v.reviews} Google-Bewertungen
         </p>
 
-        <figure class="relative mx-auto mt-14 max-w-3xl">
-          <img src={`${base}/fotos/eisbecher.jpg`} width="1000" height="668" alt="Hausgemachter Eisbecher mit frischen Früchten im Eiscafé Venezia" class="aspect-[3/2] w-full rounded-[2rem] object-cover shadow-[0_24px_60px_-18px_rgba(42,31,23,0.45)] ring-1 ring-[#2a1f17]/10" fetchpriority="high" />
+        <figure class="relative mx-auto mt-14 max-w-3xl overflow-hidden rounded-[2rem] shadow-[0_24px_60px_-18px_rgba(42,31,23,0.45)] ring-1 ring-[#2a1f17]/10">
+          <img src={`${base}/fotos/eisbecher.jpg`} width="1000" height="668" alt="Hausgemachter Eisbecher mit frischen Früchten im Eiscafé Venezia" class="kenburns aspect-[3/2] w-full object-cover" fetchpriority="high" />
           <figcaption class="script absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-[#f7f1e7]/95 px-7 py-1 text-3xl text-[#b8502e] shadow ring-1 ring-[#2a1f17]/10">frisch gemacht</figcaption>
         </figure>
       </div>
@@ -247,6 +247,8 @@ const becher: [string, string, string][] = [
     .script { font-family: "Sacramento", cursive; }
     .orb { position: absolute; width: var(--s); height: var(--s); background: var(--c); border-radius: 50%; opacity: 0.3; will-change: transform; animation: floaty 11s ease-in-out infinite; }
     @keyframes floaty { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-26px); } }
+    .kenburns { will-change: transform; animation: kenburns 24s ease-in-out infinite alternate; }
+    @keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.09); } }
     .marquee { overflow: hidden; }
     .marquee-track { display: flex; width: max-content; gap: 0; animation: marquee 30s linear infinite; }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -263,7 +265,7 @@ const becher: [string, string, string][] = [
     .hero-stagger > *:nth-child(7) { animation-delay: 0.66s; }
     @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
     @media (prefers-reduced-motion: reduce) {
-      .orb, .marquee-track { animation: none; }
+      .orb, .marquee-track, .kenburns { animation: none; }
       [data-reveal] { opacity: 1; transform: none; transition: none; }
       .hero-stagger > * { animation: none; }
     }
