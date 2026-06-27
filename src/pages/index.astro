@@ -51,7 +51,7 @@ const becher: [string, string, string][] = [
         <span class="orb" style="--c:#6b7257; --s:60px;  left:46%; top:8%;   --d:0.36"></span>
       </div>
 
-      <div class="mx-auto max-w-5xl px-5 pt-14 pb-14 text-center sm:pt-20">
+      <div class="hero-stagger mx-auto max-w-5xl px-5 pt-14 pb-14 text-center sm:pt-20">
         <p class="text-xs font-semibold tracking-[0.28em] text-[#b8502e] uppercase">Italienisches Eiscafé · Wiesloch</p>
         <h1 class="ds mt-5 text-[#2a1f17]">
           <span class="block text-xl font-medium tracking-[0.35em] uppercase">Eiscafé</span>
@@ -252,9 +252,20 @@ const becher: [string, string, string][] = [
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
     [data-reveal].in { opacity: 1; transform: none; }
+    /* Hero blendet gestaffelt von unten ein */
+    .hero-stagger > * { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .hero-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+    .hero-stagger > *:nth-child(2) { animation-delay: 0.14s; }
+    .hero-stagger > *:nth-child(3) { animation-delay: 0.24s; }
+    .hero-stagger > *:nth-child(4) { animation-delay: 0.34s; }
+    .hero-stagger > *:nth-child(5) { animation-delay: 0.44s; }
+    .hero-stagger > *:nth-child(6) { animation-delay: 0.54s; }
+    .hero-stagger > *:nth-child(7) { animation-delay: 0.66s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
     @media (prefers-reduced-motion: reduce) {
       .orb, .marquee-track { animation: none; }
       [data-reveal] { opacity: 1; transform: none; transition: none; }
+      .hero-stagger > * { animation: none; }
     }
   </style>
 
@@ -286,11 +297,20 @@ const becher: [string, string, string][] = [
     }, { threshold: 0.12 });
     document.querySelectorAll("[data-reveal]").forEach((el) => io.observe(el));
 
-    // Hero-Parallax (dezent): bewegt die Orb-Ebene, Orbs floaten unabhängig weiter
+    // Hero-Parallax (dezent): Orb-Ebene folgt Scroll + Mauszeiger, Orbs floaten unabhängig weiter
     const orbsBox = document.getElementById("orbs");
-    if (orbsBox) {
-      window.addEventListener("scroll", () => {
-        orbsBox.style.transform = `translateY(${window.scrollY * 0.18}px)`;
+    if (orbsBox && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      let sy = 0, mx = 0, my = 0, raf = 0;
+      const apply = () => {
+        raf = 0;
+        orbsBox.style.transform = `translate(${mx * 16}px, ${sy * 0.18 + my * 16}px)`;
+      };
+      const req = () => { if (!raf) raf = requestAnimationFrame(apply); };
+      window.addEventListener("scroll", () => { sy = window.scrollY; req(); }, { passive: true });
+      window.addEventListener("mousemove", (e) => {
+        mx = e.clientX / window.innerWidth - 0.5;
+        my = e.clientY / window.innerHeight - 0.5;
+        req();
       }, { passive: true });
     }
   </script>
