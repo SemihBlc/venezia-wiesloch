@@ -14,6 +14,20 @@ const sorten: [string, string][] = [
   ["Cioccolato", "#5a3a24"],
   ["Vaniglia", "#e9d49f"],
 ];
+const becher: [string, string, string][] = [
+  ["Spargeleis", "Vanilleeis, Sahne, Aprikosen, Eierlikör", "4,50"],
+  ["Cassata", "Vanille, Schokolade, Sahne, kandierte Früchte", "4,50"],
+  ["After-Eight-Becher", "Milcheis, Sahne, Schoko-Minze, Schokostreusel", "4,50"],
+  ["Tartufo", "Gem. Eis, Eierlikör, Krokant, Sahne, Schokoflip", "4,50"],
+  ["Erdbeerbecher", "Vanilleeis, frische Erdbeeren, Sahne (Saison)", "4,50"],
+  ["Amarenabecher", "Milcheis, Amarena-Kirschen, Sahne, Schokosplitter", "4,50"],
+  ["Malagabecher", "Malagaeis, Rosinen in Rum, Sahne, Karamellflip", "4,50"],
+  ["Spiegelei-Eis", "Gem. Eis, Aprikose, Eierlikör, Kakaopulver", "4,50"],
+  ["Schwarzwaldbecher", "Schokoeis, Kirschen, Kirschwasser, Sahne", "4,50"],
+  ["Krokantbecher", "Milcheis, Krokant, Amaretto-Likör, Sahne", "4,50"],
+  ["Pizza-Eis", "Gem. Eis, Obst, Erdbeersoße, Kokosstreusel", "5,50"],
+  ["Eiskaffee / Eisschokolade", "Vanille, Nocciola, kalter Kaffee, Sahne", "3,50"],
+];
 ---
 
 <Layout title={`${v.name} Wiesloch — Hausgemachtes Gelato & Dolce Vita`} fonts={fonts}>
@@ -130,6 +144,26 @@ const sorten: [string, string][] = [
         ))}
       </div>
       <p class="mt-6 text-sm text-[#a8967c]">Auswahl variiert saisonal · Preise vor Ort</p>
+    </section>
+
+    <!-- Eisbecher-Karte -->
+    <section data-reveal class="border-t border-[#2a1f17]/8 bg-[#efe6d6]">
+      <div class="mx-auto max-w-5xl px-5 py-16">
+        <p class="text-xs font-semibold tracking-[0.22em] text-[#b8502e] uppercase">Eisbecher-Karte</p>
+        <h2 class="ds mt-3 text-4xl font-semibold sm:text-5xl">Unsere Eisbecher</h2>
+        <div class="mt-9 grid gap-x-12 gap-y-1 sm:grid-cols-2">
+          {becher.map(([name, desc, preis]) => (
+            <div class="flex items-baseline gap-4 border-b border-dashed border-[#2a1f17]/15 py-3.5">
+              <div class="min-w-0">
+                <span class="ds text-xl font-semibold text-[#8a3c20]">{name}</span>
+                <span class="block text-sm leading-snug text-[#5f4d3d]">{desc}</span>
+              </div>
+              <span class="ds ml-auto shrink-0 text-xl font-semibold">{preis} €</span>
+            </div>
+          ))}
+        </div>
+        <p class="mt-6 text-sm text-[#a8967c]">Auszug aus der Karte · Sorten &amp; Saisonangebot variieren</p>
+      </div>
     </section>
 
     <!-- Öffnungszeiten + Bewertung -->

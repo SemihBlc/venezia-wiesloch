@@ -3,8 +3,17 @@ import "../styles/global.css";
 interface Props {
   title?: string;
   fonts?: string;
+  description?: string;
 }
-const { title = "Eiscafé Venezia Wiesloch", fonts = "" } = Astro.props;
+const {
+  title = "Eiscafé Venezia Wiesloch",
+  fonts = "",
+  description = "Hausgemachtes Gelato, italienischer Espresso und Eisbecher mitten in Wiesloch — seit Jahren der süße Treffpunkt an der Hauptstraße. 4,6 ★ bei Google.",
+} = Astro.props;
+const site = Astro.site?.href.replace(/\/$/, "") ?? "https://semihblc.github.io";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const url = `${site}${base}/`;
+const ogImage = `${site}${base}/fotos/eisbecher.jpg`;
 ---
 
 <!doctype html>
@@ -13,6 +22,28 @@ const { title = "Eiscafé Venezia Wiesloch", fonts = "" } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <link rel="icon" type="image/x-icon" href={`${base}/favicon.ico`} />
+    <meta name="theme-color" content="#b8502e" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Eiscafé Venezia Wiesloch" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1000" />
+    <meta property="og:image:height" content="668" />
+    <meta property="og:image:alt" content="Hausgemachter Eisbecher im Eiscafé Venezia Wiesloch" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     {fonts && <link href={fonts} rel="stylesheet" />}
